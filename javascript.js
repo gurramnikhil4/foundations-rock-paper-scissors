@@ -7,7 +7,7 @@ function getComputerChoice(){
     }
 }
 
-function playRPS(playerSelection,computerSelection){
+function playRound(playerSelection,computerSelection){
     playerSelection=playerSelection.toUpperCase();
 
     switch(playerSelection){
@@ -36,4 +36,11 @@ function playRPS(playerSelection,computerSelection){
         } 
     }
 
+}
+
+for(let count=0;count<5;count++){
+let compterChoice=getComputerChoice();
+let userChoice=prompt("Rock,Paper or Scissors?");
+let result=playRound(userChoice,compterChoice);
+console.log(result);
 }
