@@ -6,7 +6,9 @@ let choiceArray=["Rock","Paper","Scissors"];
 let playerArray=["Nobody","Computer","User"];
 
 function playRound(playerSelection,computerSelection){
-    return 2;
+let outputMatrix=[[0,2,1],[1,0,2],[2,1,0]];
+
+return outputMatrix[playerSelection][computerSelection];
 }
 
 let inputButtonArray=document.querySelectorAll('button');
