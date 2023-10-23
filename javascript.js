@@ -1,46 +1,30 @@
 function getComputerChoice(){
-    let index=Math.ceil(Math.random()*3);
-    switch(index){
-        case 1 :return "ROCK";
-        case 2: return "PAPER";
-        case 3: return "SCISSORS";
-    }
+    return Math.floor(Math.random()*3);
 }
+
+let choiceArray=["Rock","Paper","Scissors"];
+let playerArray=["Nobody","Computer","User"];
 
 function playRound(playerSelection,computerSelection){
-    playerSelection=playerSelection.toUpperCase();
-
-    switch(playerSelection){
-        case "ROCK":{
-            if(computerSelection=="PAPER")
-                return "You Lose! Paper beats Rock";
-            else if(computerSelection=="SCISSORS")
-                return "You WIN! Rock beats Scissors";
-            else return "Draw!"
-        }
-
-        case "PAPER":{
-            if(computerSelection=="ROCK")
-                return "You Win! Paper beats Rock";
-            else if(computerSelection=="SCISSORS")
-                return "You Lose! Scissors beats Paper";
-            else return "Draw!"
-        }
-
-        case "SCISSORS":{
-            if(computerSelection=="PAPER")
-                return "You Win! Scissors beats Paper";
-            else if(computerSelection=="ROCK")
-                return "You Lose! Rock beats Scissors";
-            else return "Draw!"
-        } 
-    }
-
+    return 2;
 }
 
-for(let count=0;count<5;count++){
-let compterChoice=getComputerChoice();
-let userChoice=prompt("Rock,Paper or Scissors?");
-let result=playRound(userChoice,compterChoice);
-console.log(result);
+let inputButtonArray=document.querySelectorAll('button');
+
+function buttonResult(e){
+    userChoice=e.target.textContent;
+    if(userChoice=="Rock")userChoice=0;
+    if(userChoice=="Paper")userChoice=1;
+    if(userChoice=="Scissors")userChoice=2;
+
+    const computerChoice=getComputerChoice();
+    const result=playRound(userChoice,computerChoice);
+
+    let outputResult=document.createElement('div');
+    outputResult.textContent=`${playerArray[result]} won!`;
+    document.body.appendChild(outputResult);
 }
+
+inputButtonArray.forEach(function(inputButton){
+    inputButton.addEventListener("click",buttonResult);
+});
